@@ -2,22 +2,14 @@
    Qui c'è solo ciò che Bootstrap Italia non offre: tabelle Sì/No, schede impilate su mobile,
    impaginazione del testo dei capitoli. Colori e font vengono dalle variabili di Bootstrap Italia. */
 
-/* Sidebar dei capitoli */
+/* Barra laterale: solo il comportamento sticky, il resto è Bootstrap Italia */
 .sidebar-sticky{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;padding-right:8px}
-.link-list-wrapper h3.nav-group-title,h3.nav-group-title{margin:20px 0 4px;padding:0;font-size:.8125rem;line-height:1.4;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bs-secondary,#5c6f82)}
-.nav-group-title:first-child{margin-top:0}
-.link-list a.list-item{display:grid;grid-template-columns:2.75rem 1fr;gap:0;align-items:baseline}
-.page-toc .link-list a.list-item{display:block}
-.link-list a.list-item.active{font-weight:700}
-.nav-num{white-space:nowrap;color:var(--bs-secondary,#5c6f82);font-variant-numeric:tabular-nums;font-size:.875rem}
-.menu-wrapper h3.nav-group-title{padding:0 24px}
-.menu-wrapper .link-list a.list-item{padding-left:24px}
 
 /* Pagina */
 .page{display:flex;flex-direction:column;gap:24px}
 .phead .kicker{margin:0;font-size:.875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bs-primary)}
 .phead h1{margin:2px 0 0;text-wrap:balance}
-.lead{max-width:68ch;margin:0}
+.lead{max-width:68ch;margin:0;font-size:1.25rem;line-height:1.6;font-weight:400;color:#455b71}
 .page-toc{border-left:2px solid var(--bs-border-color,#d9dadb);padding-left:16px}
 .page-toc p{margin:0 0 4px}
 .page-toc .link-list{display:flex;flex-wrap:wrap;gap:0 20px}
@@ -26,7 +18,7 @@
 .page-actions{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0;font-size:.9375rem}
 .prose{max-width:68ch;min-width:0}
 .prose>*:first-child{margin-top:0}
-.prose>p:first-child{font-size:1.25rem;color:var(--bs-secondary,#5c6f82)}
+.prose>p:first-child{font-size:1.25rem;color:#455b71}
 .prose h2{margin:2em 0 .4em;text-wrap:balance}
 .prose h3{margin:1.6em 0 .3em}
 .prose blockquote{margin:1em 0;padding:12px 20px;background:var(--bs-primary-bg-subtle,#f2f7fc);border:1px solid var(--bs-primary-border-subtle,#d3e2f3);font-size:1rem;font-weight:400;line-height:1.5}
@@ -64,7 +56,6 @@ table.sino th:last-child::before{content:"✕ ";color:var(--bs-danger,#d9364f)}
 /* Home */
 .cards .card-wrapper{height:100%}
 .cards .card{height:100%}
-.cards .nav-num{display:inline-block}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
@@ -90,8 +81,6 @@ table.sino th:last-child::before{content:"✕ ";color:var(--bs-danger,#d9364f)}
 
 /* Logo di PA digitale 2026 (dal sito padigitale2026.gov.it) */
 .it-brand-wrapper a .brand-logo{display:block;width:auto;height:48px;margin-right:16px;flex:0 0 auto}
-.cards a.list-item:has(.nav-num:empty){display:block}
-.cards .nav-num:empty{display:none}
 
 /* Pulsanti d'esempio: spazio dal testo che li precede */
 .prose br+.btn{margin-top:12px}
@@ -103,3 +92,4 @@ table.sino th:last-child::before{content:"✕ ";color:var(--bs-danger,#d9364f)}
   .prose table.sino thead th:first-child{background-color:#e7f4ef;box-shadow:inset 0 -2px 0 var(--bs-success,#008758)}
   .prose table.sino thead th:last-child{background-color:#fbeaed;box-shadow:inset 0 -2px 0 var(--bs-danger,#d9364f)}
 }
+

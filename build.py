@@ -18,7 +18,7 @@ export = json.loads((ROOT / "esportazioni.json").read_text(encoding="utf8"))
 
 
 # ---- Esportazione in Markdown (HTML dei capitoli -> .md) ----
-SEP = '<span class="separator">/</span>'
+SEP = '<span class="separator" aria-hidden="true">/</span>'
 VOID = {"br", "hr", "img", "meta", "link", "input"}
 
 
@@ -180,12 +180,11 @@ def nav_groups(current, tag="ul", cls="link-list", link_cls="list-item"):
             if group is not None:
                 out.append("</ul>")
             group = c["group"]
-            out.append(f'<h3 class="nav-group-title">{esc(group)}</h3><ul class="{cls}">')
+            out.append(f'<ul class="{cls}"><li><h3>{esc(group)}</h3></li>')
         cur = c["slug"] == current
         attrs = ' aria-current="page"' if cur else ""
         active = " active" if cur else ""
-        num = f'<span class="nav-num">{esc(c["num"])}</span>' if c["num"] else '<span class="nav-num"></span>'
-        out.append(f'<li><a class="{link_cls}{active}" href="{c["slug"]}.html"{attrs}>{num}<span>{esc(c["title"])}</span></a></li>')
+        out.append(f'<li><a class="{link_cls} medium{active}" href="{c["slug"]}.html"{attrs}><span>{esc(c["title"])}</span></a></li>')
     out.append("</ul>")
     return "\n".join(out)
 
@@ -246,7 +245,8 @@ def page(title, body, current, crumbs, extra_head=""):
 </head>
 <body>
 <div class="skiplinks">
-  <a class="visually-hidden-focusable" href="#contenuto">Vai al contenuto</a>
+  <a class="visually-hidden-focusable" href="#contenuto">Vai al contenuto principale</a>
+  <a class="visually-hidden-focusable" href="#footer">Vai al piede di pagina</a>
 </div>
 <header class="it-header-wrapper">
   <div class="it-header-slim-wrapper">
@@ -316,7 +316,7 @@ def page(title, body, current, crumbs, extra_head=""):
 
 <div class="container" id="main-container">
   <div class="row"><div class="col-12">
-    <nav class="breadcrumb-container" aria-label="Percorso"><ol class="breadcrumb">{crumbs}</ol></nav>
+    <nav class="breadcrumb-container" aria-label="Percorso di navigazione"><ol class="breadcrumb">{crumbs}</ol></nav>
   </div></div>
   <div class="row pb-5">
     <aside class="col-lg-3 d-none d-lg-block" id="sidebar" aria-label="Capitoli">
@@ -334,7 +334,7 @@ def page(title, body, current, crumbs, extra_head=""):
   </div>
 </div>
 
-<footer class="it-footer">
+<footer class="it-footer" id="footer">
   <div class="it-footer-main">
     <div class="container">
       <section>
@@ -352,10 +352,10 @@ def page(title, body, current, crumbs, extra_head=""):
   </div>
 </footer>
 
-<a href="#" aria-hidden="true" tabindex="-1" data-bs-toggle="backtotop" class="back-to-top back-to-top-small">{icon("arrow-up", "icon-light")}</a>
+<a href="#" aria-label="Torna su" data-bs-toggle="backtotop" class="back-to-top back-to-top-small">{icon("arrow-up", "icon-light")}</a>
 
 <script>window.__PUBLIC_PATH__ = "assets/bootstrap-italia/fonts";</script>
-<script src="assets/bootstrap-italia/js/bootstrap-italia.min.js"></script>
+<script src="assets/bootstrap-italia/js/bootstrap-italia.bundle.min.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>
@@ -445,8 +445,7 @@ def build():
     for c in chapters:
         if c["group"] != group:
             flush(); group, buf = c["group"], []
-        num = f'<span class="nav-num">{esc(c["num"])}</span>' if c["num"] else '<span class="nav-num"></span>'
-        buf.append(f'<li><a class="list-item" href="{c["slug"]}.html">{num}<span>{esc(c["title"])}</span></a></li>')
+        buf.append(f'<li><a class="list-item" href="{c["slug"]}.html"><span>{esc(c["title"])}</span></a></li>')
     flush()
     home = (
         f'<article class="page home"><header class="phead"><p class="kicker">{esc(site["ente"])}</p>'
