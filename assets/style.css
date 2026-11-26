@@ -2,7 +2,8 @@
    Qui c'è solo ciò che Bootstrap Italia non offre: tabelle Sì/No, schede impilate su mobile,
    impaginazione del testo dei capitoli. Colori e font vengono dalle variabili di Bootstrap Italia. */
 
-/* Barra laterale: solo il comportamento sticky, il resto è Bootstrap Italia */
+/* Barra laterale: comportamento sticky e allineamento a sinistra con il breadcrumb (toglie i 24 px di rientro di Bootstrap Italia); il resto è Bootstrap Italia */
+#sidebar .link-list li h3,#sidebar .link-list a.list-item,.cards .link-list li a.list-item{padding-left:0}
 .sidebar-sticky{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;padding-right:8px}
 
 /* Pagina */
@@ -25,7 +26,7 @@
 .prose blockquote p{margin:.35em 0;font-size:inherit}
 .prose pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:12px 16px;background:var(--bs-light,#f2f7fc);border:1px solid var(--bs-border-color,#d9dadb)}
 .prose mark{background:#ffe9a8;color:inherit}
-.prose .btn{pointer-events:none;cursor:default;margin:2px 6px 2px 0}
+.prose span.btn{pointer-events:none;cursor:default;margin:2px 6px 2px 0}
 
 /* Tabelle */
 .tbl{max-width:100%}
@@ -83,7 +84,7 @@ table.sino th:last-child::before{content:"✕ ";color:var(--bs-danger,#d9364f)}
 .it-brand-wrapper a .brand-logo{display:block;width:auto;height:48px;margin-right:16px;flex:0 0 auto}
 
 /* Pulsanti d'esempio: spazio dal testo che li precede */
-.prose br+.btn{margin-top:12px}
+.prose br+span.btn{margin-top:12px}
 
 /* Intestazione di tabella fissa allo scorrimento (da 992 px; sotto, la tabella scorre in orizzontale nel suo contenitore) */
 @media (min-width:992px){
